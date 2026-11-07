@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GSE120575 Single-Cell RNA-seq Analysis Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; line-height: 1.6; color: #333; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 25px; }
+        table { border-collapse: collapse; width: 80%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .highlight { background-color: #e8f4f8; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>GSE120575 Single-Cell RNA-seq Analysis Report</h1>
+    <p><strong>Dataset:</strong> GSE120575 (Sade-Feldman et al., 2018 - Melanoma Immunotherapy)</p>
+    <p><strong>Total Cells Processed:</strong> 16290</p>
+    <p><strong>Total Genes Analyzed:</strong> 45884</p>
+
+    <h2>1. Summary of Workflow</h2>
+    <ul>
+        <li><strong>QC & Normalization:</strong> Filtered low-quality cells (min 200 genes) and unexpressed genes. Normalized to 10,000 counts/cell and log1p transformed. Selected top 2,000 highly variable genes.</li>
+        <li><strong>Clustering & Embedding:</strong> PCA (30 PCs), 15-nearest neighbor graph, UMAP projection, and Leiden clustering at resolution 0.8 (10 distinct clusters).</li>
+        <li><strong>Annotation:</strong> Validated lineages using marker expression patterns across T-cell subsets, NK cells, Myeloid/Macrophages, Dendritic cells, Plasma cells, and B cells.</li>
+    </ul>
+
+    <h2>2. Key Findings</h2>
+    <div class="highlight">
+        <ul>
+            <li><strong>B Cells (Cluster 9):</strong> Strongly enriched in treatment <strong>Responders (~69%)</strong>, supporting the key role of tertiary lymphoid structures and humoral immunity in anti-PD-1 efficacy.</li>
+            <li><strong>Myeloid / Macrophages (Cluster 7):</strong> Heavily skewed toward <strong>Non-responders (~88%)</strong>, underscoring the immunosuppressive myeloid barrier in non-responsive tumors.</li>
+        </ul>
+    </div>
+
+    <h2>3. Proportions by Cell Type</h2>
+    <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>response</th>
+      <th>Non-responder</th>
+      <th>Responder</th>
+    </tr>
+    <tr>
+      <th>cell_type</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CD4+ T cells</th>
+      <td>79.281975</td>
+      <td>20.718025</td>
+    </tr>
+    <tr>
+      <th>CD4+ Naive/Memory T cells</th>
+      <td>55.759398</td>
+      <td>44.240602</td>
+    </tr>
+    <tr>
+      <th>NK cells</th>
+      <td>69.861432</td>
+      <td>30.138568</td>
+    </tr>
+    <tr>
+      <th>CD8+ T cells</th>
+      <td>60.072416</td>
+      <td>39.927584</td>
+    </tr>
+    <tr>
+      <th>Cytotoxic CD8+ T cells</th>
+      <td>77.191888</td>
+      <td>22.808112</td>
+    </tr>
+    <tr>
+      <th>Dendritic Cells</th>
+      <td>83.793103</td>
+      <td>16.206897</td>
+    </tr>
+    <tr>
+      <th>Gamma-delta T cells</th>
+      <td>74.324324</td>
+      <td>25.675676</td>
+    </tr>
+    <tr>
+      <th>Macrophages</th>
+      <td>88.085106</td>
+      <td>11.914894</td>
+    </tr>
+    <tr>
+      <th>Plasma cells</th>
+      <td>62.662338</td>
+      <td>37.337662</td>
+    </tr>
+    <tr>
+      <th>B cells</th>
+      <td>31.186441</td>
+      <td>68.813559</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
